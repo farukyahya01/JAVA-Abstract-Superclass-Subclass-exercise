@@ -51,7 +51,7 @@ public abstract class Vehicle{
 		return price;
 	}
 	
-	public abstract double getTotalPrice();
+	public abstract double getTotalPrice() throws Exception;
 	
 	public double getTotalWeight() {
 		return weight;

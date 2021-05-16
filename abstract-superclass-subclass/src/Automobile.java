@@ -14,14 +14,19 @@ public class Automobile extends Vehicle {
 		return numberOfAirbags;
 	}
 	
-	public double getPriceOfExtraOptions() {
+	public double getPriceOfExtraOptions(){
 		return priceOfExtraOptions;
 	}
 	
-	public double getTotalPrice() {
-		return 12.4;
+	@Override
+	public double getTotalPrice() throws Exception {
+		if(super.getPrice() < 0 || priceOfExtraOptions < 0) {
+			throw new Exception("Price values should be positive for " + getVehicleNumber());
+		}
+		return super.getPrice() + priceOfExtraOptions;
 	}
 	
+	@Override
 	public double getTotalWeight() {
 		// (5 * 80) mean is the 5 people of avarage 80 kgs
 		return super.getTotalWeight() + (5 * 80);

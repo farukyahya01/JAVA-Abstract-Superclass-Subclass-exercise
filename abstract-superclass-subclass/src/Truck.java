@@ -24,10 +24,15 @@ public class Truck extends Vehicle{
 		return priceOfTrailer;
 	}
 	
-	public double getTotalPrice() {
+	@Override
+	public double getTotalPrice() throws Exception{
+		if(super.getPrice() < 0 || priceOfTrailer < 0) {
+			throw new Exception("Price values should be positive for " + getVehicleNumber());
+		}
 		return super.getPrice() + getPriceOfTrailer();
 	}
 	
+	@Override
 	public double getTotalWeight() {
 		return super.getTotalWeight() + getMaxLoadCapacity();
 	}

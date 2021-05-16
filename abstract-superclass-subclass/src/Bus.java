@@ -26,7 +26,10 @@ public class Bus extends Vehicle {
 	}
 	
 	@Override
-	public double getTotalPrice() {
+	public double getTotalPrice() throws Exception {
+		if(super.getPrice() < 0 || numberOfPassengerSeats < 0) {
+			throw new Exception("Price values should be positive for " + getVehicleNumber());
+		}
 		return super.getPrice() + getPriceOfDriverBed() + getPriceOfToilet();
 	}
 	
